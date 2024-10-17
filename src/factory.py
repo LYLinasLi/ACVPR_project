@@ -3,8 +3,6 @@ from torch.utils.data import DataLoader
 from src.networks import *
 from torchvision import models
 import os
-os.environ["HTTP_PROXY"]= "http://proxy.utwente.nl:3128"
-os.environ["HTTPS_PROXY"]= "http://proxy.utwente.nl:3128"
 
 def create_dataloader(dataset, root_dir, idx_file, gt_file, image_t, batch_size):
     # Create dataset
