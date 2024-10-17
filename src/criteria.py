@@ -33,20 +33,6 @@ class TripletLoss(torch.nn.Module):
 
         return loss
 
-class TripletLoss_2(torch.nn.Module):
-    def __init__(self, margin=.1, **kwargs):
-        super(TripletLoss_2, self).__init__()
-        self.margin = margin
-        self.distance = torch.nn.PairwiseDistance(p=2)
-
-    def forward(self, anchor, positive, negative, gt_anchor_positive, gt_anchor_negative):
-        D_anchor_positive = self.distance(anchor, positive).float().squeeze()
-        D_anchor_negative = self.distance(anchor, negative).float().squeeze()
-
-        loss = F.relu(- D_anchor_negative + D_anchor_positive + self.margin)
-
-        return loss
-
 
 class AdaptiveTripletLoss(torch.nn.Module):
     def __init__(self, **kwargs):
