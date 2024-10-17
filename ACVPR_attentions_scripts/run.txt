@@ -1,0 +1,7 @@
+set MAPILLARY_ROOT="E:\A\mapillary_sls"
+
+python src/labeling/create_json_idx.py --dataset msls --root_dir E:/A/mapillary_sls/mapillary_sls/datasets
+
+python extract_predictions.py --dataset MSLS --root_dir E:/A/mapillary_sls/mapillary_sls/datasets/ --subset val --model_file E:/A/Models/MSLS/MSLS_resnet50_GeM_480_GCL.pth --backbone resnet50 --pool GeM --f_length 2048
+
+python train.py --root_dir E:/A/mapillary_sls/mapillary_sls/datasets/ --cities try --backbone gcnet --use_gpu --pool GeM --learning_rate .01
